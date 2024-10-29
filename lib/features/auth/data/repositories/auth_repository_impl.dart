@@ -8,10 +8,10 @@ import 'package:blog_app/features/auth/data/models/user_model.dart';
 import 'package:blog_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/fpdart.dart';
 
-class AuthRepositoryImpl implements IAuthRepository {
-  final AuthRemoteDataSource remoteDataSource;
+class AuthRepository implements IAuthRepository {
+  final IAuthRemoteDataSource remoteDataSource;
   // final ConnectionChecker connectionChecker;
-  const AuthRepositoryImpl(
+  const AuthRepository(
     this.remoteDataSource,
     // this.connectionChecker,
   );
