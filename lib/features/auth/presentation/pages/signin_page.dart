@@ -1,19 +1,21 @@
 import 'package:blog_app/core/theme/app_palette.dart';
+import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/signup_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignInPage extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => const SignInPage());
+class LoginPage extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => const LoginPage());
 
-  const SignInPage({super.key});
+  const LoginPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -53,7 +55,18 @@ class _SignInPageState extends State<SignInPage> {
                 isObscureText: true,
               ),
               const SizedBox(height: 15),
-              AuthGradientButton(buttonText: "Sign in", onPressed: () {}),
+              AuthGradientButton(
+                  buttonText: "Sign in",
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      context.read<AuthBloc>().add(
+                            AuthLogin(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            ),
+                          );
+                    }
+                  }),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
