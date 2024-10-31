@@ -46,29 +46,23 @@ class AuthRepository implements IAuthRepository {
   // }
 
   @override
-  Future<Either<Failure, String>> loginWithEmailPassword({
+  Future<Either<Failure, User>> loginWithEmailPassword({
     required String email,
     required String password,
   }) async {
-    return right("ok");
-    // return _getUser(
-    //   () async => await remoteDataSource.loginWithEmailPassword(
-    //     email: email,
-    //     password: password,
-    //   ),
-    // );
+    throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, String>> signUpWithEmailPassword({
+  Future<Either<Failure, User>> signUpWithEmailPassword({
     required String name,
     required String email,
     required String password,
   }) async {
     try {
-      final userId = await remoteDataSource.signUpWithEmailPassword(
+      final user = await remoteDataSource.signUpWithEmailPassword(
           name: name, email: email, password: password);
-      return right(userId);
+      return right(user);
     } on ServerException catch (e) {
       return left(Failure(e.message));
     }
