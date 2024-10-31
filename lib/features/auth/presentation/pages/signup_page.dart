@@ -1,11 +1,10 @@
-import 'package:blog_app/core/common/entities/widgets/loader.dart';
+import 'package:blog_app/core/common/widgets/loader.dart';
 import 'package:blog_app/core/theme/app_palette.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/signin_page.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
-import 'package:blog_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -81,9 +80,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           if (formKey.currentState!.validate()) {
                             context.read<AuthBloc>().add(
                                   AuthSignUp(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                    name: nameController.text,
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                    name: nameController.text.trim(),
                                   ),
                                 );
                           }
@@ -91,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, SignInPage.route());
+                        Navigator.push(context, LoginPage.route());
                       },
                       child: RichText(
                         text: TextSpan(
