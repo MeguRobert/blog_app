@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class AddNewBlogPage extends StatefulWidget {
@@ -18,6 +19,26 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
         title: const Text('Blog App'),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.done_rounded)),
+        ],
+      ),
+      body: Column(
+        children: [
+          DottedBorder(
+              child: Container(
+            height: 150,
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.folder_open, size: 40),
+                SizedBox(height: 15),
+                Text(
+                  "Select your image",
+                  style: TextStyle(fontSize: 15),
+                ),
+              ],
+            ),
+          ))
         ],
       ),
     );
