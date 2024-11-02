@@ -1,3 +1,4 @@
+import 'package:blog_app/core/theme/app_palette.dart';
 import 'package:flutter/material.dart';
 
 void showSnackBar(BuildContext context, String message,
@@ -10,4 +11,8 @@ void showSnackBar(BuildContext context, String message,
         content: Text(message),
       ),
     );
+}
+
+void showErrorSnackBar(BuildContext context, String message) {
+  showSnackBar(context, message, color: AppPalette.errorColor);
 }
