@@ -20,8 +20,8 @@ class BlogPage extends StatefulWidget {
 class _BlogPageState extends State<BlogPage> {
   @override
   void initState() {
-    context.read<BlogBloc>().add(BlogFetchAllBlogs());
     super.initState();
+    context.read<BlogBloc>().add(BlogFetchAllBlogs());
   }
 
   @override
